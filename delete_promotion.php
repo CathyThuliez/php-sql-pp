@@ -6,8 +6,8 @@
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-<link rel="stylesheet" href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
-  <title>Modifier un élève</title>
+  <link rel="stylesheet" href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
+  <title>Supprimer une promotion</title>
 </head>
 <body>
 <?php
@@ -15,11 +15,11 @@
   if (isset($_GET["id"]) && $_GET["id"] != "" && $_GET["id"] != 0) {
 
     // Si on a des variables en POST, on tente de modifier la promotion ciblée
-    if (isset($_POST["studentname"]) && $_POST["studentname"] != " ") {
-      $request = sprintf("UPDATE eleves SET firstname='%s' WHERE id='%s'",
-                  $_POST["studentname"], $_POST["id"]);
+    if (isset($_POST["promotionname"]) && $_POST["promotionname"] != " ") {
+      $request = sprintf("DELETE promotions SET name='%s' WHERE id='%s'",
+                  $_POST["promotionname"], $_POST["id"]);
       if($connection->query($request)) {
-          printf("<div class='alert alert-success'>Elève modifié</div>");
+          printf("<div class='alert alert-success'>Promotion supprimée</div>");
       }
       else {
         // Gestion d’erreur SQL
@@ -28,9 +28,9 @@
     }
 
     // On a un id en GET, on sélectionne la promotion et ses informations
-    $request = sprintf("SELECT * FROM eleves WHERE id=%s", $_GET["id"]);
+    $request = sprintf("SELECT * FROM promotions WHERE id=%s", $_GET["id"]);
     $result = $connection->query($request);
-    $eleves = $result->fetch_assoc();
+    $promotion = $result->fetch_assoc();
   }
   else {
     // message d’alerte si on n’a pas d’id en paramètre d’URL
@@ -42,18 +42,18 @@
   <fieldset>
 
   <!-- Form Name -->
-  <legend>Modifier un élève</legend>
+  <legend>Modifier une promotion</legend>
 
   <!-- Text input
   Notez les balises PHP qui permettent l’affichage dynamique -->
   <div class="form-group">
-    <label class="col-md-4 control-label" for="studentname">Nom de l'élève</label>
+    <label class="col-md-4 control-label" for="promotionname">Nom de la promotion</label>
     <div class="col-md-4">
-    <input id="studentname" name="studentname"
+    <input id="promotionname" name="promotionname"
     placeholder="Nom de la promotion" class="form-control input-md"
-    required="" value="<?php printf("%s",$student["name"]); ?>"
+    required="" value="<?php printf("%s",$promotion["name"]); ?>"
     type="text">
-    <span class="help-block">Indiquez ici le nom de l'élève</span>
+    <span class="help-block">Indiquez ici le nom de la promotion</span>
     </div>
   </div>
 
@@ -61,7 +61,7 @@
   <div class="form-group">
     <label class="col-md-4 control-label" for="validate"></label>
     <div class="col-md-4">
-      <input type="hidden" name="id" value="<?php printf("%s", $student["id"]);?>">
+      <input type="hidden" name="id" value="<?php printf("%s", $promotion["id"]);?>">
       <button id="validate" name="validate" class="btn btn-primary">Valider</button>
     </div>
   </div>

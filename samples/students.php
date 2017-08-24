@@ -14,7 +14,7 @@
     <legend>Liste des élèves</legend>
     <!-- Button double -->
 <?php
-$connection = new mysqli("localhost", "root", "azertypoiu003", "coursSQL1");
+$connection = new mysqli("localhost", "root", "abc003", "coursSQL1");
 
     if ($result = $connection->query("SELECT * FROM eleves")) {
       while ($row = $result->fetch_assoc()) {

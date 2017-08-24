@@ -1,12 +1,12 @@
 <?php
 
-  $connection = new mysqli("localhost", "coursSQL1", "1234", "coursSQL1");
+  $connection = new mysqli("localhost", "root", "abc003", "coursSQL1");
 
 ?>
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css" />
   <title>Liste des élèves</title>
 </head>
 <body>

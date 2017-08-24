@@ -1,6 +1,6 @@
 <?php
 
-  $connection = new mysqli("localhost", "root", "azertypoiu003", "coursSQL1");
+  $connection = new mysqli("localhost", "root", "abc003", "coursSQL1");
 
 ?>
 <!DOCTYPE html>

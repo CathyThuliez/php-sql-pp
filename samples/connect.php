@@ -1,6 +1,6 @@
 <?php
 
-$connection = new mysqli("localhost", "root", "azertypoiu003", "coursSQL1");
+$connection = new mysqli("localhost", "root", "abc003", "coursSQL1");
 
 if ($connection->connect_error) {
   printf(
@@ -9,6 +9,6 @@ if ($connection->connect_error) {
   );
 }
 else {
-  printf("On est connectés, hourra");
+  printf("On est connectés, hourra \o/");
 }
 ?>
