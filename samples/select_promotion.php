@@ -8,7 +8,7 @@
   <body>
     <?php
 
-    $connection = new mysqli("localhost", "root", "abc003", "coursSQL1");
+    $connection = new mysqli("localhost", "root", "azertypoiu003", "coursSQL1");
 
     if ($result = $connection->query("SELECT * FROM promotions")) {
       printf("\nLe résultat de la requête contient %d lignes.\n", $result->num_rows);

@@ -2,7 +2,7 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Promotion</legend>
+<legend>Modifier une promotion</legend>
 
 <!-- Text input-->
 <div class="form-group">
