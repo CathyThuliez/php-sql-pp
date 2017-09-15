@@ -1,4 +1,5 @@
 <?php
+  header("Access-Control-Allow-Origin: *");
 include("config/db.php");
 $connection = new mysqli(
   $db_host,
@@ -8,11 +9,15 @@ $connection = new mysqli(
 );
 
 $_POST = json_decode($_POST);
-$request = sprintf("UPDATE promotions SET
-                name='%s'
+$request = sprintf("DELETE  FROM eleves SET
+                firstname='%s'
+                lastname='%s'
+                promotion_id='%d'
                 WHERE id='%s'
                 ",
-                $_POST["name"],
+                $_POST["firstname"],
+                $_POST["lastname"],
+                $_POST["promotion_id"],
                 $_POST["id"]);
 if($connection->query($request)) {
   echo json_encode("success");

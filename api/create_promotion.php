@@ -1,4 +1,5 @@
 <?php
+  header("Access-Control-Allow-Origin: *");
 include("config/db.php");
 $connection = new mysqli(
   $db_host,
@@ -8,12 +9,11 @@ $connection = new mysqli(
 );
 
 $_POST = json_decode($_POST);
-$request = sprintf("DELETE promotions SET
+$request = sprintf("INSERT INTO promotions (id, name) VALUES
+                id='',
                 name='%s'
-                WHERE id='%s'
                 ",
-                $_POST["name"],
-                $_POST["id"]);
+                $_POST["promotionname"]);
 if($connection->query($request)) {
   echo json_encode("success");
 }

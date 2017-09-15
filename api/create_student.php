@@ -1,5 +1,6 @@
 <?php
-include("config/db.php");
+  header("Access-Control-Allow-Origin: *");
+include("../config/db.php");
 $connection = new mysqli(
   $db_host,
   $db_user,

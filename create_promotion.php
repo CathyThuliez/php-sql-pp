@@ -1,5 +1,6 @@
 <?php
   include("include/header.php");
+header("Access-Control-Allow-Origin: *");
 
 if(isset($_POST["promotionname"]) && $_POST["promotionname"] != " ") {
   $request = sprintf("INSERT INTO promotions (id, name) VALUES ('', '%s')",

@@ -1,4 +1,5 @@
 <?php
+  header("Access-Control-Allow-Origin: *");
 include("config/db.php");
 $connection = new mysqli(
   $db_host,
@@ -8,11 +9,12 @@ $connection = new mysqli(
 );
 
 $_POST = json_decode($_POST);
-$request = sprintf("INSERT INTO promotions (id, name) VALUES
-                id='',
+$request = sprintf("UPDATE promotions SET
                 name='%s'
+                WHERE id='%s'
                 ",
-                $_POST["promotionname"]);
+                $_POST["name"],
+                $_POST["id"]);
 if($connection->query($request)) {
   echo json_encode("success");
 }

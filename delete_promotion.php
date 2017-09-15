@@ -1,5 +1,6 @@
 <?php
   include("include/header.php");
+  header("Access-Control-Allow-Origin: *");
 
   if (isset($_GET["id"]) && $_GET["id"] != "" && $_GET["id"] != 0) {
 

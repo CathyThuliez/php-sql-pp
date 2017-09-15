@@ -1,5 +1,6 @@
 <?php
   include("include/header.php");
+  header("Access-Control-Allow-Origin: *");
 
   if(isset($_POST["user_validation"]) && $_POST["user_validation"] == "1"
     && is_numeric($_POST["id"])) {
