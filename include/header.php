@@ -12,10 +12,10 @@ $connection = new mysqli(
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
 
-  <script type="text/javascript" src="vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
   <title>TP PHP: Gestion des promotions et des élèves</title>
 </head>
 <body>

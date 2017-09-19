@@ -1,20 +1,29 @@
 <?php
-  header("Access-Control-Allow-Origin: *");
-include("config/db.php");
+header("Access-Control-Allow-Origin: *");
+include("../config/db.php");
 $connection = new mysqli(
   $db_host,
   $db_user,
   $db_password,
   $db_base
 );
+$connection->set_charset("utf8");
 
-$_POST = json_decode($_POST);
+if(!isset($_POST["promotion"])) {
+  die(json_encode("No data provided"));
+}
+
+$params = json_decode($_POST["promotion"],true);
 $request = sprintf("UPDATE promotions SET
-                name='%s'
-                WHERE id='%s'
-                ",
-                $_POST["name"],
-                $_POST["id"]);
+                name='%s',
+                startdate='%s',
+                enddate=%d
+                WHERE id='%s'",
+                $params["name"],
+                $params["startdate"],
+                $params["enddate"],
+                $params["id"]);
+
 if($connection->query($request)) {
   echo json_encode("success");
 }

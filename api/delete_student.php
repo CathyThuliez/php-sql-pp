@@ -1,24 +1,21 @@
 <?php
-  header("Access-Control-Allow-Origin: *");
-include("config/db.php");
+header("Access-Control-Allow-Origin: *");
+include("../config/db.php");
 $connection = new mysqli(
   $db_host,
   $db_user,
   $db_password,
   $db_base
 );
+$connection->set_charset("utf8");
 
-$_POST = json_decode($_POST);
-$request = sprintf("DELETE  FROM eleves SET
-                firstname='%s'
-                lastname='%s'
-                promotion_id='%d'
-                WHERE id='%s'
-                ",
-                $_POST["firstname"],
-                $_POST["lastname"],
-                $_POST["promotion_id"],
-                $_POST["id"]);
+if(!isset($_POST["student"])) {
+  die(json_encode("No data provided"));
+}
+
+$params = json_decode($_POST["student"],true);
+$request = sprintf("DELETE FROM eleves WHERE id='%s'", $params["id"]);
+
 if($connection->query($request)) {
   echo json_encode("success");
 }

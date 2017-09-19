@@ -1,19 +1,25 @@
 <?php
-  header("Access-Control-Allow-Origin: *");
-include("config/db.php");
+header("Access-Control-Allow-Origin: *");
+include("../config/db.php");
 $connection = new mysqli(
   $db_host,
   $db_user,
   $db_password,
   $db_base
 );
+$connection->set_charset("utf8");
 
-$_POST = json_decode($_POST);
-$request = sprintf("INSERT INTO promotions (id, name) VALUES
-                id='',
-                name='%s'
-                ",
-                $_POST["promotionname"]);
+if(!isset($_POST["promotion"])) {
+   die(json_encode("No data provided"));
+}
+
+$params = json_decode($_POST["promotion"]);
+$request = sprintf("INSERT INTO promotions (name, startdate, enddate)
+                VALUES ('%s', '%s', '%s')",
+                $params->name,
+                $params->startdate,
+                $params->enddate);
+
 if($connection->query($request)) {
   echo json_encode("success");
 }

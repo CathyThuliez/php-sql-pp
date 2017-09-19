@@ -1,6 +1,6 @@
 <?php
-  include("include/header.php");
   header("Access-Control-Allow-Origin: *");
+  include("include/header.php");
 ?>
   <form class="form-horizontal">
     <fieldset>
